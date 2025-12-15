@@ -66,4 +66,29 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.2
     });
 
+    // DESTINASI SECTION
+    gsap.from(".destinasi-header", {
+        scrollTrigger: {
+            trigger: "#destinasi",
+            start: "top 70%",
+        },
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    });
+
+    gsap.from(".destinasi-item", {
+        scrollTrigger: {
+            trigger: ".destinasi-item",
+            start: "top 75%",
+        },
+        y: 80,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.3
+    });
+
+
 });
