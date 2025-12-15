@@ -90,5 +90,41 @@ document.addEventListener("DOMContentLoaded", () => {
         stagger: 0.3
     });
 
+    // CONTACT SECTION
+    gsap.from(".contact-header", {
+        scrollTrigger: {
+            trigger: "#kontak",
+            start: "top 70%",
+        },
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    });
+
+    gsap.from(".contact-form", {
+        scrollTrigger: {
+            trigger: "#kontak",
+            start: "top 65%",
+        },
+        x: -60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.2
+    });
+
+    gsap.from(".contact-illustration", {
+        scrollTrigger: {
+            trigger: "#kontak",
+            start: "top 65%",
+        },
+        x: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.3
+    });
+
 
 });
