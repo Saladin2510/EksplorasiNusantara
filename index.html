@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page Wisata</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP -->
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+
+    <style>
+        body {
+            font-family: 'Poppins';
+        }
+
+        .playfair {
+            font-family: 'Playfair';
+        }
+
+        .inter {
+            font-family: 'inter';
+        }
+
+        .header-light {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .header-dark {
+            color: #111827;
+            /* gray-900 */
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+
+<body class="text-gray-900">
+
+    <!-- HEADER -->
+    <header id="header"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-sm header-light">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-12 py-6 ">
+            <div class="text-xl font-semibold transition-colors duration-300">
+                LOGO
+            </div>
+            <nav class="space-x-10 text-sm tracking-wide transition-colors duration-300">
+                <a href="#" class="hover:opacity-70">BERANDA</a>
+                <a href="#" class="hover:opacity-70">DESTINASI</a>
+                <a href="#" class="hover:opacity-70">KONTAK</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="relative h-screen w-full overflow-hidden">
+
+
+        <!-- VIDEO BACKGROUND -->
+        <video id="heroVideo" class="absolute top-0 left-0 w-full h-full object-cover" src="assets/video/hero2.mp4"
+            autoplay muted playsinline></video>
+
+
+        <!-- OVERLAY -->
+        <div class="absolute inset-0 bg-black/30"></div>
+
+
+        <!-- CONTENT -->
+        <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+            <h1 class="hero-title playfair text-8xl leading-tight text-white drop-shadow-lg">
+                Sebuah perjalanan yang<br />berkesan
+            </h1>
+            <p class="hero-subtitle playfair text-lg text-white/90 max-w-xl">
+                Temukan destinasi wisata terbaik di Indonesia
+            </p>
+            <button
+                class="hero-btn mt-10 flex items-center gap-4 bg-teal-200 text-black px-4 py-2 rounded-full font-medium hover:bg-teal-300 transition inter  ">
+                Jelajahi sekarang
+                <span class="text-xl">→</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="min-h-screen flex items-center bg-white">
+        <div class="max-w-7xl mx-auto px-12 grid grid-cols-2 gap-20 items-center w-full">
+            <!-- TEXT -->
+            <div class="about-text">
+                <span class="text-sm tracking-widest text-gray-400 uppercase">
+                    Tentang Kami
+                </span>
+
+                <h2 class="font-hero text-5xl mt-4 mb-6 leading-tight">
+                    Menjelajah keindahan<br />Nusantara
+                </h2>
+
+                <p class="text-gray-600 leading-relaxed max-w-lg">
+                    Kami menghadirkan pengalaman visual dan informasi destinasi wisata
+                    terbaik di Indonesia, dirancang untuk menginspirasi perjalanan
+                    dan eksplorasi budaya yang berkesan.
+                </p>
+            </div>
+
+            <!-- IMAGE -->
+            <div class="about-image">
+                <img src="assets/img/about.jpg" alt="Wisata Indonesia"
+                    class="rounded-2xl shadow-lg w-full h-[420px] object-cover" />
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
