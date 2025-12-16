@@ -32,40 +32,59 @@
         .inter {
             font-family: 'inter';
         }
-
-        .header-light {
-            color: white;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .header-dark {
-            color: #111827;
-            /* gray-900 */
-            background-color: rgba(255, 255, 255, 0.6);
-        }
     </style>
 </head>
 
 <body class="text-gray-900">
 
-    <!-- HEADER -->
+    <!-- HEADER (Floating & Oval) -->
     <header id="header"
-        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-sm header-light">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-12 py-6 ">
-            <div class="text-xl font-semibold transition-colors duration-300">
-                LOGO
-            </div>
-            <nav class="space-x-10 text-sm tracking-wide transition-colors duration-300">
-                <a href="#" class="hover:opacity-70">BERANDA</a>
-                <a href="#" class="hover:opacity-70">DESTINASI</a>
-                <a href="#" class="hover:opacity-70">KONTAK</a>
+        class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-50 transition-all duration-300 rounded-full border border-white/10 backdrop-blur-md bg-white/10 shadow-lg">
+        <div class="px-8 py-4 flex items-center justify-between">
+            <!-- LOGO -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 rounded-full bg-teal-300 flex items-center justify-center text-black font-bold text-lg">
+                    E
+                </div>
+                <span class="text-white font-playfair tracking-wide group-hover:text-teal-200 transition-colors">
+                    Eksplorasi
+                </span>
+            </a>
+
+            <!-- DESKTOP NAV -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-white/90">
+                <a href="#home" class="nav-link transition-all pb-1 hover:text-teal-200">BERANDA</a>
+                <a href="#destinasi" class="nav-link transition-all pb-1 hover:text-teal-200">DESTINASI</a>
+                <a href="#about" class="nav-link transition-all pb-1 hover:text-teal-200">TENTANG</a>
+                <a href="#kontak"
+                    class="bg-teal-200 text-gray-900 px-5 py-2 rounded-full hover:bg-teal-300 transition-all font-semibold hover:shadow-[0_0_15px_rgba(153,246,228,0.5)]">
+                    KONTAK
+                </a>
             </nav>
+
+            <!-- MOBILE MENU BTN -->
+            <button id="mobileMenuBtn" class="md:hidden text-white p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- MOBILE MENU DRAWER (Absolute to header) -->
+        <div id="mobileMenu"
+            class="absolute top-full left-0 w-full mt-2 bg-white/95 backdrop-blur-xl rounded-3xl p-6 flex-col gap-4 hidden shadow-2xl border border-white/20 origin-top text-center text-gray-800">
+            <a href="#" class="block py-2 hover:text-teal-600 font-medium">BERANDA</a>
+            <a href="#destinasi" class="block py-2 hover:text-teal-600 font-medium">DESTINASI</a>
+            <a href="#about" class="block py-2 hover:text-teal-600 font-medium">TENTANG</a>
+            <a href="#kontak" class="block py-2 hover:text-teal-600 font-medium">KONTAK</a>
         </div>
     </header>
 
 
     <!-- HERO SECTION -->
-    <section class="relative h-screen w-full overflow-hidden">
+    <section id="home" class="relative h-screen w-full overflow-hidden">
 
 
         <!-- VIDEO BACKGROUND -->
