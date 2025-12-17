@@ -218,41 +218,226 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // 4. Internal Image Parallax (Polish)
+    const destImages = document.querySelectorAll(".dest-img");
+    destImages.forEach(img => {
+        gsap.to(img, {
+            y: "10%", // Move image down slightly inside container
+            ease: "none",
+            scrollTrigger: {
+                trigger: img.parentElement,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    });
+
+    // 5. Floating Particles Animation
+    gsap.to(".float-particle", {
+        y: -50,
+        duration: 2,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        stagger: {
+            each: 0.5,
+            from: "random"
+        }
+    });
+
     // CONTACT SECTION
-    gsap.from(".contact-header", {
+    gsap.from(".contact-card", {
         scrollTrigger: {
             trigger: "#kontak",
             start: "top 70%",
         },
-        y: 60,
+        y: 100,
         opacity: 0,
-        duration: 1,
-        ease: "power3.out"
+        duration: 1.2,
+        ease: "power4.out"
     });
 
-    gsap.from(".contact-form", {
+    // Form Submit Animation
+    const submitBtn = document.getElementById("submitBtn");
+    submitBtn.addEventListener("click", () => {
+        const span = submitBtn.querySelector("span");
+        const svg = submitBtn.querySelector("svg");
+
+        // Fly away icon
+        gsap.to(svg, {
+            x: 50,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.in",
+            onComplete: () => {
+                gsap.set(svg, { x: -50 });
+                span.innerText = "Terkirim!";
+                submitBtn.classList.add("bg-teal-400", "text-black");
+                submitBtn.classList.remove("bg-white", "text-gray-900");
+
+                // Return icon
+                gsap.to(svg, {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            }
+        });
+    });
+
+    // FOOTER REVEAL
+    gsap.from("footer div", {
         scrollTrigger: {
-            trigger: "#kontak",
-            start: "top 65%",
+            trigger: "footer",
+            start: "top 90%",
         },
-        x: -60,
+        y: 30,
         opacity: 0,
         duration: 1,
-        ease: "power3.out",
-        delay: 0.2
+        stagger: 0.1,
+        ease: "power2.out"
     });
 
-    gsap.from(".contact-illustration", {
-        scrollTrigger: {
-            trigger: "#kontak",
-            start: "top 65%",
-        },
-        x: 60,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.3
-    });
+    // AI CHATBOT INTEGRATION
+    const toggleChat = document.getElementById("toggleChat");
+    const chatWindow = document.getElementById("chatWindow");
+    const closeChat = document.getElementById("closeChat");
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+    const chatMessages = document.getElementById("chatMessages");
+    const chips = document.querySelectorAll(".chat-chip");
 
+    let isChatOpen = false;
+
+    // Toggle Chat
+    function toggleChatWidget() {
+        isChatOpen = !isChatOpen;
+        if (isChatOpen) {
+            chatWindow.style.display = "flex";
+            // Small delay to allow display:flex to apply before opacity transition
+            setTimeout(() => {
+                chatWindow.classList.remove("opacity-0", "translate-y-10", "scale-95");
+                chatWindow.classList.add("opacity-100", "translate-y-0", "scale-100");
+                chatInput.focus();
+            }, 10);
+            toggleChat.classList.add("scale-0", "opacity-0");
+        } else {
+            chatWindow.classList.remove("opacity-100", "translate-y-0", "scale-100");
+            chatWindow.classList.add("opacity-0", "translate-y-10", "scale-95");
+            setTimeout(() => {
+                chatWindow.style.display = "none";
+            }, 300);
+            toggleChat.classList.remove("scale-0", "opacity-0");
+        }
+    }
+
+    toggleChat.addEventListener("click", toggleChatWidget);
+    closeChat.addEventListener("click", toggleChatWidget);
+
+    // Manual Chat Logic (Offline/Rule-Based)
+
+    function addMessage(text, sender) {
+        const div = document.createElement("div");
+        div.className = "flex gap-3 " + (sender === "user" ? "flex-row-reverse" : "");
+
+        const avatar = sender === "ai"
+            ? `<div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0">AI</div>`
+            : `<div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-xs font-bold shrink-0">U</div>`;
+
+        const bubbleStyle = sender === "ai"
+            ? "bg-white/10 border border-white/10 text-gray-800 backdrop-blur-sm rounded-tl-none"
+            : "bg-teal-500 text-white rounded-tr-none shadow-md";
+
+        div.innerHTML = `
+            ${avatar}
+            <div class="${bubbleStyle} p-3 rounded-2xl text-sm max-w-[85%] self-start leading-relaxed">
+                ${text}
+            </div>
+        `;
+
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTyping() {
+        const div = document.createElement("div");
+        div.id = "typingIndicator";
+        div.className = "flex gap-3";
+        div.innerHTML = `
+            <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0">AI</div>
+            <div class="bg-white/10 border border-white/10 p-3 rounded-2xl rounded-tl-none backdrop-blur-sm flex gap-1 items-center h-10">
+                <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></span>
+                <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-100"></span>
+                <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-200"></span>
+            </div>
+        `;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTyping() {
+        const typing = document.getElementById("typingIndicator");
+        if (typing) typing.remove();
+    }
+
+    const KNOWLEDGE_BASE = {
+        "halo": "Halo! Selamat datang di Eksplorasi Nusantara. Mau liburan ke mana kali ini? 🌿",
+        "hai": "Hai! Ada yang bisa saya bantu?",
+        "pagi": "Selamat pagi! Semangat untuk petualangan baru?",
+        "siang": "Selamat siang! Sudah punya rencana liburan?",
+        "malam": "Selamat malam! Waktu yang tepat untuk merencanakan perjalanan esok hari.",
+        "bali": "Bali adalah 'Pulau Dewata' yang terkenal dengan pantainya (Kuta, Seminyak, Nusa Penida), budayanya yang kental, dan kuliner seperti Ayam Betutu. Waktu terbaik ke sana adalah April-Oktober!",
+        "prambanan": "Candi Prambanan adalah kompleks candi Hindu terbesar di Indonesia yang dibangun pada abad ke-9. Lokasinya di Yogyakarta. Jangan lewatkan sendratari Ramayana di malam hari!",
+        "raja ampat": "Raja Ampat di Papua Barat adalah surga penyelam dunia! Terkenal dengan gugusan pulau karst Wayag dan Piaynemo. Pastikan membawa perlengkapan snorkeling!",
+        "destinasi": "Kami merekomendasikan 3 destinasi utama: 1. Candi Prambanan (Budaya), 2. Raja Ampat (Alam Bawah Laut), 3. Nusa Penida, Bali (Pantai & Tebing).",
+        "tips": "Tips travel dari kami: 1. Pesan tiket jauh-jauh hari. 2. Bawa uang tunai secukupnya. 3. Hormati adat istiadat setempat. 4. Jangan lupa sunscreen!",
+        "kuliner": "Wajib coba: Gudeg di Jogja, Babi Guling/Ayam Betutu di Bali, dan Papeda di Papua (Raja Ampat).",
+        "terima kasih": "Sama-sama! Semoga harimu menyenangkan. Jangan ragu bertanya lagi ya! 😊",
+    };
+
+    async function generateResponse(prompt) {
+        // Simulate thinking delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        const lowerPrompt = prompt.toLowerCase();
+
+        // Simple keyword matching
+        for (const [key, answer] of Object.entries(KNOWLEDGE_BASE)) {
+            if (lowerPrompt.includes(key)) {
+                return answer;
+            }
+        }
+
+        // Default Fallback
+        return "Maaf, saya masih belajar. Coba tanya tentang 'Bali', 'Prambanan', 'Raja Ampat', 'Tips', atau 'Kuliner'. 😊";
+    }
+
+    async function handleSend(e) {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        // User Message
+        addMessage(text, "user");
+        chatInput.value = "";
+
+        // AI Response
+        showTyping();
+        const aiResponse = await generateResponse(text);
+        removeTyping();
+        addMessage(aiResponse, "ai");
+    }
+
+    chatForm.addEventListener("submit", handleSend);
+
+    // Quick Chips Logic
+    chips.forEach(chip => {
+        chip.addEventListener("click", () => {
+            chatInput.value = chip.innerText;
+            handleSend({ preventDefault: () => { } });
+        });
+    });
 
 });
