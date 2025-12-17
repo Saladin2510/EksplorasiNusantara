@@ -1,5 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // ============================================
+    // LANGUAGE SWITCHER
+    // ============================================
+    let currentLang = localStorage.getItem('language') || 'id';
+    
+    const langToggle = document.getElementById("langToggle");
+    const langToggleMobile = document.getElementById("langToggleMobile");
+    const currentFlag = document.getElementById("currentFlag");
+    const currentLangText = document.getElementById("currentLang");
+    const currentFlagMobile = document.getElementById("currentFlagMobile");
+    const currentLangMobile = document.getElementById("currentLangMobile");
+    
+    // Set initial language
+    setLanguage(currentLang);
+    
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('language', lang);
+        
+        // Update flag and text
+        if (lang === 'id') {
+            currentFlag.textContent = '🇮🇩';
+            currentLangText.textContent = 'ID';
+            currentFlagMobile.textContent = '🇮🇩';
+            currentLangMobile.textContent = 'ID';
+        } else {
+            currentFlag.textContent = '🇬🇧';
+            currentLangText.textContent = 'EN';
+            currentFlagMobile.textContent = '🇬🇧';
+            currentLangMobile.textContent = 'EN';
+        }
+        
+        // Update all elements with data-lang attribute
+        document.querySelectorAll('[data-lang]').forEach(element => {
+            const key = element.getAttribute('data-lang');
+            if (translations[lang] && translations[lang][key]) {
+                // Fade out animation
+                gsap.to(element, {
+                    opacity: 0,
+                    y: -10,
+                    duration: 0.2,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        element.textContent = translations[lang][key];
+                        // Fade in animation
+                        gsap.to(element, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+            }
+        });
+        
+        // Update placeholder attributes
+        document.querySelectorAll('[data-lang-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-lang-placeholder');
+            if (translations[lang] && translations[lang][key]) {
+                element.setAttribute('placeholder', translations[lang][key]);
+            }
+        });
+    }
+    
+    function toggleLanguage() {
+        const newLang = currentLang === 'id' ? 'en' : 'id';
+        setLanguage(newLang);
+    }
+    
+    langToggle.addEventListener('click', toggleLanguage);
+    langToggleMobile.addEventListener('click', toggleLanguage);
+
+    // ============================================
+    // HERO ANIMATIONS
+    // ============================================
     const heroTl = gsap.timeline({
         defaults: {
             ease: "power3.out"
@@ -272,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power2.in",
             onComplete: () => {
                 gsap.set(svg, { x: -50 });
-                span.innerText = "Terkirim!";
+                span.innerText = translations[currentLang]['contact_success'];
                 submitBtn.classList.add("bg-teal-400", "text-black");
                 submitBtn.classList.remove("bg-white", "text-gray-900");
 

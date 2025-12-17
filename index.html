@@ -43,10 +43,7 @@
         <div class="px-8 py-4 flex items-center justify-between">
             <!-- LOGO -->
             <a href="#" class="flex items-center gap-2 group">
-                <div
-                    class="w-8 h-8 rounded-full bg-teal-300 flex items-center justify-center text-black font-bold text-lg">
-                    E
-                </div>
+                <img src="logo_web.svg" alt="Eksplorasi Nusantara" class="w-8 h-8">
                 <span class="text-white font-playfair tracking-wide group-hover:text-teal-200 transition-colors">
                     Eksplorasi Nusantara
                 </span>
@@ -54,13 +51,22 @@
 
             <!-- DESKTOP NAV -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-white/90">
-                <a href="#home" class="nav-link transition-all pb-1 hover:text-teal-200">BERANDA</a>
-                <a href="#destinasi" class="nav-link transition-all pb-1 hover:text-teal-200">DESTINASI</a>
-                <a href="#about" class="nav-link transition-all pb-1 hover:text-teal-200">TENTANG</a>
+                <a href="#home" class="nav-link transition-all pb-1 hover:text-teal-200" data-lang="nav_home">BERANDA</a>
+                <a href="#destinasi" class="nav-link transition-all pb-1 hover:text-teal-200" data-lang="nav_destinations">DESTINASI</a>
+                <a href="#about" class="nav-link transition-all pb-1 hover:text-teal-200" data-lang="nav_about">TENTANG</a>
                 <a href="#kontak"
-                    class="bg-teal-200 text-gray-900 px-5 py-2 rounded-full hover:bg-teal-300 transition-all font-semibold hover:shadow-[0_0_15px_rgba(153,246,228,0.5)]">
+                    class="bg-teal-200 text-gray-900 px-5 py-2 rounded-full hover:bg-teal-300 transition-all font-semibold hover:shadow-[0_0_15px_rgba(153,246,228,0.5)]" data-lang="nav_contact">
                     KONTAK
                 </a>
+                
+                <!-- LANGUAGE TOGGLE -->
+                <button id="langToggle" class="group flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 transition-all border border-white/20">
+                    <span id="currentFlag" class="text-lg">🇮🇩</span>
+                    <span id="currentLang" class="text-xs font-semibold">ID</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:rotate-180 transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
             </nav>
 
             <!-- MOBILE MENU BTN -->
@@ -75,10 +81,19 @@
         <!-- MOBILE MENU DRAWER (Absolute to header) -->
         <div id="mobileMenu"
             class="absolute top-full left-0 w-full mt-2 bg-white/95 backdrop-blur-xl rounded-3xl p-6 flex-col gap-4 hidden shadow-2xl border border-white/20 origin-top text-center text-gray-800">
-            <a href="#" class="block py-2 hover:text-teal-600 font-medium">BERANDA</a>
-            <a href="#destinasi" class="block py-2 hover:text-teal-600 font-medium">DESTINASI</a>
-            <a href="#about" class="block py-2 hover:text-teal-600 font-medium">TENTANG</a>
-            <a href="#kontak" class="block py-2 hover:text-teal-600 font-medium">KONTAK</a>
+            <a href="#" class="block py-2 hover:text-teal-600 font-medium" data-lang="nav_home">BERANDA</a>
+            <a href="#destinasi" class="block py-2 hover:text-teal-600 font-medium" data-lang="nav_destinations">DESTINASI</a>
+            <a href="#about" class="block py-2 hover:text-teal-600 font-medium" data-lang="nav_about">TENTANG</a>
+            <a href="#kontak" class="block py-2 hover:text-teal-600 font-medium" data-lang="nav_contact">KONTAK</a>
+            
+            <!-- MOBILE LANGUAGE TOGGLE -->
+            <button id="langToggleMobile" class="mx-auto flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 hover:bg-teal-100 transition-all border border-teal-200">
+                <span id="currentFlagMobile" class="text-lg">🇮🇩</span>
+                <span id="currentLangMobile" class="text-xs font-semibold text-gray-900">ID</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-900">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -103,27 +118,27 @@
             <div class="overflow-hidden">
                 <h1
                     class="hero-title playfair text-6xl md:text-8xl lg:text-9xl font-bold text-white drop-shadow-2xl tracking-tight leading-none">
-                    <span class="inline-block origin-bottom">Jelajahi</span>
-                    <span class="inline-block text-teal-300 italic font-serif origin-bottom">Keajaiban</span>
+                    <span class="inline-block origin-bottom" data-lang="hero_title_1">Jelajahi</span>
+                    <span class="inline-block text-teal-300 italic font-serif origin-bottom" data-lang="hero_title_2">Keajaiban</span>
                 </h1>
             </div>
 
             <div class="overflow-hidden mt-2">
                 <h1
                     class="hero-title playfair text-6xl md:text-8xl lg:text-9xl font-bold text-white drop-shadow-2xl tracking-tight leading-none">
-                    <span class="inline-block origin-bottom">Nusantara</span>
+                    <span class="inline-block origin-bottom" data-lang="hero_title_3">Nusantara</span>
                 </h1>
             </div>
 
             <!-- SUBTITLE -->
-            <p class="hero-subtitle playfair text-lg md:text-xl text-white/90 max-w-xl mt-8 font-light tracking-wide">
+            <p class="hero-subtitle playfair text-lg md:text-xl text-white/90 max-w-xl mt-8 font-light tracking-wide" data-lang="hero_subtitle">
                 Temukan surga tersembunyi dan cerita tak terlupakan di setiap sudut Indonesia.
             </p>
 
             <!-- CTA BUTTON -->
             <button
                 class="hero-btn mt-12 group relative px-8 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white overflow-hidden transition-all hover:bg-white/20 hover:scale-105">
-                <span class="relative z-10 flex items-center gap-3 font-medium tracking-wider text-sm">
+                <span class="relative z-10 flex items-center gap-3 font-medium tracking-wider text-sm" data-lang="hero_cta">
                     MULAI PETUALANGAN
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 transition-transform">
@@ -135,7 +150,7 @@
             <!-- SCROLL INDICATOR -->
             <div
                 class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-80">
-                <span class="text-xs text-white/70 tracking-widest uppercase">Scroll</span>
+                <span class="text-xs text-white/70 tracking-widest uppercase" data-lang="hero_scroll">Scroll</span>
                 <div class="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
             </div>
 
@@ -155,17 +170,17 @@
             <div class="about-text" data-speed="0.8">
                 <div class="flex items-center gap-4 mb-6">
                     <span class="w-12 h-[1px] bg-teal-400"></span>
-                    <span class="text-sm tracking-widest text-teal-600 font-semibold uppercase">
+                    <span class="text-sm tracking-widest text-teal-600 font-semibold uppercase" data-lang="about_badge">
                         Tentang Kami
                     </span>
                 </div>
 
                 <h2 class="font-playfair text-5xl md:text-6xl text-gray-900 leading-[1.1] mb-8">
-                    Menjelajah <br />
-                    <span class="italic text-teal-500">Keindahan</span> Nusantara
+                    <span data-lang="about_title_1">Menjelajah</span> <br />
+                    <span class="italic text-teal-500" data-lang="about_title_2">Keindahan</span> <span data-lang="about_title_3">Nusantara</span>
                 </h2>
 
-                <p class="text-gray-600 leading-relaxed text-lg max-w-lg mb-10 font-light">
+                <p class="text-gray-600 leading-relaxed text-lg max-w-lg mb-10 font-light" data-lang="about_text">
                     Kami menghadirkan pengalaman visual dan informasi destinasi wisata
                     terbaik di Indonesia. Platform ini dirancang untuk menginspirasi perjalanan
                     Anda, menemukan surga tersembunyi, dan merayakan kekayaan budaya yang tak ternilai.
@@ -173,7 +188,7 @@
 
                 <button
                     class="group flex items-center gap-3 text-gray-900 font-medium pb-1 border-b border-gray-900 transition-all hover:text-teal-600 hover:border-teal-600">
-                    Baca Selengkapnya
+                    <span data-lang="about_cta">Baca Selengkapnya</span>
                     <span class="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
             </div>
@@ -210,15 +225,15 @@
 
             <!-- SECTION HEADER -->
             <div class="text-center max-w-3xl mx-auto mb-28 destinasi-header relative z-10">
-                <span class="font-playfair text-lg italic text-teal-600">
+                <span class="font-playfair text-lg italic text-teal-600" data-lang="dest_badge">
                     Destinasi Pilihan
                 </span>
 
                 <h2 class="font-playfair text-5xl leading-tight mt-4 mb-6 text-gray-900">
-                    Jalur Menuju <span class="text-teal-500 italic">Keajaiban</span>
+                    <span data-lang="dest_title_1">Jalur Menuju</span> <span class="text-teal-500 italic" data-lang="dest_title_2">Keajaiban</span>
                 </h2>
 
-                <p class="text-gray-600 leading-relaxed text-lg">
+                <p class="text-gray-600 leading-relaxed text-lg" data-lang="dest_subtitle">
                     Temukan rute perjalanan terbaik yang telah kami kurasi khusus untuk
                     pengalaman eksplorasi yang tak terlupakan.
                 </p>
@@ -257,18 +272,18 @@
                         <span
                             class="absolute -top-20 -left-10 text-[10rem] font-bold text-gray-100 -z-10 select-none font-playfair opacity-50">01</span>
 
-                        <h3 class="font-playfair text-4xl mb-6 text-gray-900 relative">
+                        <h3 class="font-playfair text-4xl mb-6 text-gray-900 relative" data-lang="dest_1_title">
                             Candi Prambanan
                         </h3>
 
-                        <p class="text-gray-600 leading-relaxed mb-8 text-lg relative">
+                        <p class="text-gray-600 leading-relaxed mb-8 text-lg relative" data-lang="dest_1_text">
                             Saksi bisu sejarah megah tanah Jawa. Nikmati senja di antara
                             relief kuno yang menceritakan kisah Ramayana diringi kemegahan arsitektur masa lampau.
                         </p>
 
                         <button
                             class="flex items-center gap-3 text-gray-900 border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-teal-50 hover:border-teal-200 hover:text-teal-700 transition-all group">
-                            Lihat Detail
+                            <span data-lang="dest_cta">Lihat Detail</span>
                             <span class="group-hover:translate-x-1 transition-transform">→</span>
                         </button>
                     </div>
@@ -295,18 +310,18 @@
                             class="absolute -top-20 -right-10 md:right-auto md:-left-10 text-[10rem] font-bold text-gray-100 -z-10 select-none font-playfair opacity-50">02</span>
 
                         <div class="flex flex-col md:items-end">
-                            <h3 class="font-playfair text-4xl mb-6 text-gray-900">
+                            <h3 class="font-playfair text-4xl mb-6 text-gray-900" data-lang="dest_2_title">
                                 Raja Ampat
                             </h3>
 
-                            <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                            <p class="text-gray-600 leading-relaxed mb-8 text-lg" data-lang="dest_2_text">
                                 Surga bawah laut dunia. Gugusan pulau karang dan air sebening kristal
                                 yang menawarkan pengalaman menyelam tak tertandingi di ujung timur Nusantara.
                             </p>
 
                             <button
                                 class="flex items-center gap-3 text-gray-900 border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-orange-50 hover:border-orange-200 hover:text-orange-700 transition-all group self-start md:self-end">
-                                Lihat Detail
+                                <span data-lang="dest_cta">Lihat Detail</span>
                                 <span class="group-hover:translate-x-1 transition-transform">→</span>
                             </button>
                         </div>
@@ -333,18 +348,18 @@
                         <span
                             class="absolute -top-20 -left-10 text-[10rem] font-bold text-gray-100 -z-10 select-none font-playfair opacity-50">03</span>
 
-                        <h3 class="font-playfair text-4xl mb-6 text-gray-900">
+                        <h3 class="font-playfair text-4xl mb-6 text-gray-900" data-lang="dest_3_title">
                             Nusa Penida, Bali
                         </h3>
 
-                        <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                        <p class="text-gray-600 leading-relaxed mb-8 text-lg" data-lang="dest_3_text">
                             Tebing curam yang memeluk lautan biru. Temukan ketenangan
                             di pantai tersembunyi jauh dari hiruk pikuk kota.
                         </p>
 
                         <button
                             class="flex items-center gap-3 text-gray-900 border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all group">
-                            Lihat Detail
+                            <span data-lang="dest_cta">Lihat Detail</span>
                             <span class="group-hover:translate-x-1 transition-transform">→</span>
                         </button>
                     </div>
@@ -370,9 +385,9 @@
                 <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-orange-500/20 rounded-full blur-[80px]"></div>
 
                 <div class="text-center mb-12">
-                    <span class="text-teal-300 font-medium tracking-wide text-sm uppercase">Hubungi Kami</span>
-                    <h2 class="font-playfair text-4xl md:text-5xl text-white mt-3 mb-4">Siap Memulai Petualangan?</h2>
-                    <p class="text-gray-400 max-w-lg mx-auto">
+                    <span class="text-teal-300 font-medium tracking-wide text-sm uppercase" data-lang="contact_badge">Hubungi Kami</span>
+                    <h2 class="font-playfair text-4xl md:text-5xl text-white mt-3 mb-4" data-lang="contact_title">Siap Memulai Petualangan?</h2>
+                    <p class="text-gray-400 max-w-lg mx-auto" data-lang="contact_subtitle">
                         Jangan ragu untuk bertanya atau berkonsultasi mengenai rencana perjalanan Anda. Tim kami siap
                         membantu.
                     </p>
@@ -385,7 +400,7 @@
                                 class="w-full bg-transparent border-b border-gray-600 py-3 text-white focus:outline-none focus:border-teal-400 transition-colors peer"
                                 placeholder=" ">
                             <label for="name"
-                                class="absolute left-0 top-3 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-teal-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base pointer-events-none">
+                                class="absolute left-0 top-3 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-teal-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base pointer-events-none" data-lang="contact_name">
                                 Nama Lengkap
                             </label>
                         </div>
@@ -395,7 +410,7 @@
                                 class="w-full bg-transparent border-b border-gray-600 py-3 text-white focus:outline-none focus:border-teal-400 transition-colors peer"
                                 placeholder=" ">
                             <label for="email"
-                                class="absolute left-0 top-3 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-teal-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base pointer-events-none">
+                                class="absolute left-0 top-3 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-teal-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base pointer-events-none" data-lang="contact_email">
                                 Alamat Email
                             </label>
                         </div>
@@ -406,7 +421,7 @@
                             class="w-full bg-transparent border-b border-gray-600 py-3 text-white focus:outline-none focus:border-teal-400 transition-colors peer resize-none"
                             placeholder=" "></textarea>
                         <label for="message"
-                            class="absolute left-0 top-3 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-teal-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base pointer-events-none">
+                            class="absolute left-0 top-3 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-teal-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base pointer-events-none" data-lang="contact_message">
                             Tulis Pesan Anda...
                         </label>
                     </div>
@@ -414,7 +429,7 @@
                     <div class="text-center pt-4">
                         <button type="button" id="submitBtn"
                             class="bg-white text-gray-900 px-10 py-4 rounded-full font-bold hover:bg-teal-300 transition-all hover:scale-105 active:scale-95 flex items-center gap-3 mx-auto">
-                            <span>Kirim Pesan</span>
+                            <span data-lang="contact_submit">Kirim Pesan</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -434,11 +449,10 @@
             <!-- Brand -->
             <div class="md:col-span-2">
                 <div class="flex items-center gap-2 text-white font-playfair text-2xl font-bold mb-6">
-                    <div class="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-black text-sm">E
-                    </div>
+                    <img src="logo_web.svg" alt="Eksplorasi Nusantara" class="w-8 h-8">
                     Eksplorasi Nusantara
                 </div>
-                <p class="mb-8 max-w-xs leading-relaxed">
+                <p class="mb-8 max-w-xs leading-relaxed" data-lang="footer_desc">
                     Platform panduan wisata terpercaya untuk menemukan keindahan tersembunyi di seluruh penjuru
                     Indonesia.
                 </p>
@@ -454,27 +468,27 @@
 
             <!-- Links -->
             <div>
-                <h4 class="text-white font-bold mb-6">Perusahaan</h4>
+                <h4 class="text-white font-bold mb-6" data-lang="footer_company">Perusahaan</h4>
                 <ul class="space-y-4">
-                    <li><a href="#about" class="hover:text-teal-400 transition-colors">Tentang Kami</a></li>
-                    <li><a href="#" class="hover:text-teal-400 transition-colors">Karir</a></li>
-                    <li><a href="#" class="hover:text-teal-400 transition-colors">Blog</a></li>
-                    <li><a href="#" class="hover:text-teal-400 transition-colors">Kebijakan Privasi</a></li>
+                    <li><a href="#about" class="hover:text-teal-400 transition-colors" data-lang="footer_company_about">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-teal-400 transition-colors" data-lang="footer_company_career">Karir</a></li>
+                    <li><a href="#" class="hover:text-teal-400 transition-colors" data-lang="footer_company_blog">Blog</a></li>
+                    <li><a href="#" class="hover:text-teal-400 transition-colors" data-lang="footer_company_privacy">Kebijakan Privasi</a></li>
                 </ul>
             </div>
 
             <!-- Links -->
             <div>
-                <h4 class="text-white font-bold mb-6">Dukungan</h4>
+                <h4 class="text-white font-bold mb-6" data-lang="footer_support">Dukungan</h4>
                 <ul class="space-y-4">
-                    <li><a href="#kontak" class="hover:text-teal-400 transition-colors">Pusat Bantuan</a></li>
-                    <li><a href="#" class="hover:text-teal-400 transition-colors">Syarat & Ketentuan</a></li>
-                    <li><a href="#" class="hover:text-teal-400 transition-colors">Hubungi Kami</a></li>
+                    <li><a href="#kontak" class="hover:text-teal-400 transition-colors" data-lang="footer_support_help">Pusat Bantuan</a></li>
+                    <li><a href="#" class="hover:text-teal-400 transition-colors" data-lang="footer_support_terms">Syarat & Ketentuan</a></li>
+                    <li><a href="#" class="hover:text-teal-400 transition-colors" data-lang="footer_support_contact">Hubungi Kami</a></li>
                 </ul>
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-12 mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-600">
+        <div class="max-w-7xl mx-auto px-12 mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-600" data-lang="footer_copyright">
             &copy; 2025 Eksplorasi Nusantara. All rights reserved.
         </div>
     </footer>
@@ -482,33 +496,29 @@
 
 
     <!-- JS -->
+    <script src="js/translations.js"></script>
     <script src="js/main.js"></script>
     <!-- CHATBOT WIDGET -->
     <div id="chatWidget" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end pointer-events-none">
-
+        
         <!-- CHAT WINDOW (Hidden by default) -->
-        <div id="chatWindow"
-            class="mb-4 w-[350px] md:w-[400px] h-[500px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 pointer-events-auto transition-all duration-300 origin-bottom-right scale-95"
-            style="display: none;">
-
+        <div id="chatWindow" class="mb-4 w-[350px] md:w-[400px] h-[500px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 pointer-events-auto transition-all duration-300 origin-bottom-right scale-95" style="display: none;">
+            
             <!-- Header -->
-            <div
-                class="p-5 bg-gradient-to-r from-teal-500/80 to-teal-400/80 backdrop-blur-md flex items-center justify-between">
+            <div class="p-5 bg-gradient-to-r from-teal-500/80 to-teal-400/80 backdrop-blur-md flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-teal-600 font-bold shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-teal-600 font-bold shadow-sm">
                         AI
                     </div>
                     <div>
-                        <h4 class="text-white font-bold text-sm">Nusantara Assistant</h4>
+                        <h4 class="text-white font-bold text-sm" data-lang="chat_title">Nusantara Assistant</h4>
                         <span class="text-teal-100 text-xs flex items-center gap-1">
-                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Online
+                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> <span data-lang="chat_status">Online</span>
                         </span>
                     </div>
                 </div>
                 <button id="closeChat" class="text-white/80 hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor" class="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -517,41 +527,28 @@
             <!-- Messages Area -->
             <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
                 <!-- Welcome Message -->
-                <div class="flex gap-3">
-                    <div
-                        class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0">
-                        AI</div>
-                    <div
-                        class="bg-white/10 border border-white/10 p-3 rounded-2xl rounded-tl-none text-sm text-gray-800 backdrop-blur-sm self-start max-w-[85%]">
-                        Halo! Saya asisten pintar Eksplorasi Nusantara. Ada yang bisa saya bantu untuk rencana
-                        perjalananmu? 🌿
+                <div class="flex gap-3" id="chatWelcome">
+                    <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 text-xs font-bold shrink-0">AI</div>
+                    <div class="bg-white/10 border border-white/10 p-3 rounded-2xl rounded-tl-none text-sm text-gray-800 backdrop-blur-sm self-start max-w-[85%]" data-lang="chat_welcome">
+                        Halo! Saya asisten pintar Eksplorasi Nusantara. Ada yang bisa saya bantu untuk rencana perjalananmu? 🌿
                     </div>
                 </div>
                 <!-- Suggested Chips -->
-                <div class="flex flex-wrap gap-2 pl-11">
-                    <button
-                        class="chat-chip text-xs bg-white/20 hover:bg-teal-500 hover:text-white text-gray-700 border border-white/30 px-3 py-1.5 rounded-full transition-all">Destinasi
-                        Populer</button>
-                    <button
-                        class="chat-chip text-xs bg-white/20 hover:bg-teal-500 hover:text-white text-gray-700 border border-white/30 px-3 py-1.5 rounded-full transition-all">Tips
-                        Travel</button>
-                    <button
-                        class="chat-chip text-xs bg-white/20 hover:bg-teal-500 hover:text-white text-gray-700 border border-white/30 px-3 py-1.5 rounded-full transition-all">Kuliner
-                        Khas</button>
+                <div class="flex flex-wrap gap-2 pl-11" id="chatChips">
+                    <button class="chat-chip text-xs bg-white/20 hover:bg-teal-500 hover:text-white text-gray-700 border border-white/30 px-3 py-1.5 rounded-full transition-all" data-lang="chat_chip_1">Destinasi Populer</button>
+                    <button class="chat-chip text-xs bg-white/20 hover:bg-teal-500 hover:text-white text-gray-700 border border-white/30 px-3 py-1.5 rounded-full transition-all" data-lang="chat_chip_2">Tips Travel</button>
+                    <button class="chat-chip text-xs bg-white/20 hover:bg-teal-500 hover:text-white text-gray-700 border border-white/30 px-3 py-1.5 rounded-full transition-all" data-lang="chat_chip_3">Kuliner Khas</button>
                 </div>
             </div>
 
             <!-- Input Area -->
             <div class="p-4 bg-white/5 border-t border-white/10 backdrop-blur-md">
                 <form id="chatForm" class="flex gap-2">
-                    <input type="text" id="chatInput" placeholder="Tanya sesuatu..."
+                    <input type="text" id="chatInput" data-lang-placeholder="chat_placeholder"
                         class="flex-1 bg-white/20 border border-white/20 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-teal-400 focus:bg-white/40 transition-all placeholder:text-gray-500 text-gray-800">
-                    <button type="submit"
-                        class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white hover:bg-teal-400 transition-all shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-5 h-5 ml-0.5">
-                            <path
-                                d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                    <button type="submit" class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white hover:bg-teal-400 transition-all shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-0.5">
+                            <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
                         </svg>
                     </button>
                 </form>
@@ -559,12 +556,9 @@
         </div>
 
         <!-- TOGGLE BUTTON -->
-        <button id="toggleChat"
-            class="w-16 h-16 rounded-full bg-gradient-to-tr from-teal-500 to-teal-400 shadow-[0_0_30px_rgba(20,184,166,0.4)] flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 pointer-events-auto border-4 border-white">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                stroke="currentColor" class="w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+        <button id="toggleChat" class="w-16 h-16 rounded-full bg-gradient-to-tr from-teal-500 to-teal-400 shadow-[0_0_30px_rgba(20,184,166,0.4)] flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 pointer-events-auto border-4 border-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
             </svg>
         </button>
     </div>
