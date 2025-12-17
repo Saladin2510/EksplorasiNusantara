@@ -6,23 +6,39 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // PARALLAX EFFECT
+    gsap.to("#heroVideo", {
+        scrollTrigger: {
+            trigger: "#home",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+        },
+        y: 150, // Move video slower than content
+        scale: 1.1 // Subtle scale for depth
+    });
+
+    // TEXT REVEAL ANIMATION
     heroTl
-        .from(".hero-title", {
-            y: 60,
+        .from(".hero-title span", {
+            y: 100,
             opacity: 0,
-            duration: 1.2
+            duration: 1.5,
+            stagger: 0.15,
+            ease: "power4.out"
         })
         .from(".hero-subtitle", {
-            y: 40,
+            y: 30,
             opacity: 0,
-            duration: 0.9
-        }, "-=0.8") // 🔥 overlap
+            duration: 1,
+            ease: "power2.out"
+        }, "-=1")
         .from(".hero-btn", {
-            y: 20,
+            scale: 0.8,
             opacity: 0,
-            duration: 0.7,
-            clearProps: "all"
-        }, "-=0.6"); // 🔥 muncul cepat
+            duration: 0.8,
+            ease: "back.out(1.7)"
+        }, "-=0.8");
 
     // NAVBAR INTERACTION
     const header = document.getElementById("header");
@@ -104,34 +120,77 @@ document.addEventListener("DOMContentLoaded", () => {
     // ABOUT SECTION
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(".about-text", {
+    const aboutTl = gsap.timeline({
         scrollTrigger: {
             trigger: "#about",
-            start: "top 70%",
-        },
-        y: 60,
+            start: "top 75%",
+        }
+    });
+
+    // 1. Text Reveal
+    aboutTl.from(".about-text > *", {
+        y: 40,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
+        stagger: 0.1,
         ease: "power3.out"
     });
 
-    gsap.from(".about-image", {
-        scrollTrigger: {
-            trigger: "#about",
-            start: "top 70%",
-        },
-        x: 60,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.2
+    // 2. Image Mask Reveal
+    aboutTl.to(".about-image-mask", {
+        scaleX: 0,
+        duration: 1.2,
+        ease: "power4.inOut"
+    }, "-=0.6");
+
+    // 3. Image Zoom Out (Inside mask)
+    aboutTl.from(".about-img", {
+        scale: 1.3,
+        duration: 1.2,
+        ease: "power4.inOut"
+    }, "<");
+
+    // 4. Parallax Effect (Scrub)
+    gsap.utils.toArray("[data-speed]").forEach(layer => {
+        const speed = layer.getAttribute("data-speed");
+        gsap.to(layer, {
+            y: (i, target) => (1 - parseFloat(speed)) * 100, // Move based on speed diff
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0
+            }
+        });
     });
 
     // DESTINASI SECTION
+
+    // 1. Path Drawing
+    const path = document.querySelector("#explorationPath");
+    const pathLength = path.getTotalLength();
+
+    // Set initial dash attributes for drawing effect
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
+
+    gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".space-y-40", // The wrapper of items
+            start: "top 60%",
+            end: "bottom 80%",
+            scrub: 1
+        }
+    });
+
+    // 2. Header Reveal
     gsap.from(".destinasi-header", {
         scrollTrigger: {
             trigger: "#destinasi",
-            start: "top 70%",
+            start: "top 75%",
         },
         y: 60,
         opacity: 0,
@@ -139,16 +198,24 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "power3.out"
     });
 
-    gsap.from(".destinasi-item", {
-        scrollTrigger: {
-            trigger: ".destinasi-item",
-            start: "top 75%",
-        },
-        y: 80,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        stagger: 0.3
+    // 3. Items Reveal (Parallax & Fade)
+    const items = document.querySelectorAll(".destinasi-item");
+
+    items.forEach((item, index) => {
+        // Alternate slide direction
+        const xOffset = index % 2 === 0 ? 50 : -50;
+
+        gsap.from(item, {
+            scrollTrigger: {
+                trigger: item,
+                start: "top 80%",
+            },
+            x: xOffset,
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
     });
 
     // CONTACT SECTION

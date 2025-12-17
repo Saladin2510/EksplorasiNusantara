@@ -89,166 +89,239 @@
 
         <!-- VIDEO BACKGROUND -->
         <video id="heroVideo" class="absolute top-0 left-0 w-full h-full object-cover" src="assets/video/hero2.mp4"
-            autoplay muted playsinline></video>
+            autoplay muted loop playsinline></video>
 
 
-        <!-- OVERLAY -->
-        <div class="absolute inset-0 bg-black/30"></div>
+        <!-- OVERLAY (Gradient) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
 
 
         <!-- CONTENT -->
         <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-            <h1 class="hero-title playfair text-8xl leading-tight text-white drop-shadow-lg">
-                Sebuah perjalanan yang<br />berkesan
-            </h1>
-            <p class="hero-subtitle playfair text-lg text-white/90 max-w-xl">
-                Temukan destinasi wisata terbaik di Indonesia
+
+            <!-- TITLE CONTAINER -->
+            <div class="overflow-hidden">
+                <h1
+                    class="hero-title playfair text-6xl md:text-8xl lg:text-9xl font-bold text-white drop-shadow-2xl tracking-tight leading-none">
+                    <span class="inline-block origin-bottom">Jelajahi</span>
+                    <span class="inline-block text-teal-300 italic font-serif origin-bottom">Keajaiban</span>
+                </h1>
+            </div>
+
+            <div class="overflow-hidden mt-2">
+                <h1
+                    class="hero-title playfair text-6xl md:text-8xl lg:text-9xl font-bold text-white drop-shadow-2xl tracking-tight leading-none">
+                    <span class="inline-block origin-bottom">Nusantara</span>
+                </h1>
+            </div>
+
+            <!-- SUBTITLE -->
+            <p class="hero-subtitle playfair text-lg md:text-xl text-white/90 max-w-xl mt-8 font-light tracking-wide">
+                Temukan surga tersembunyi dan cerita tak terlupakan di setiap sudut Indonesia.
             </p>
+
+            <!-- CTA BUTTON -->
             <button
-                class="hero-btn mt-10 flex items-center gap-4 bg-teal-200 text-black px-4 py-2 rounded-full font-medium hover:bg-teal-300 transition inter  ">
-                Jelajahi sekarang
-                <span class="text-xl">→</span>
+                class="hero-btn mt-12 group relative px-8 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white overflow-hidden transition-all hover:bg-white/20 hover:scale-105">
+                <span class="relative z-10 flex items-center gap-3 font-medium tracking-wider text-sm">
+                    MULAI PETUALANGAN
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 transition-transform">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
             </button>
+
+            <!-- SCROLL INDICATOR -->
+            <div
+                class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-80">
+                <span class="text-xs text-white/70 tracking-widest uppercase">Scroll</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
+            </div>
+
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="min-h-screen flex items-center bg-white">
-        <div class="max-w-7xl mx-auto px-12 grid grid-cols-2 gap-20 items-center w-full">
-            <!-- TEXT -->
-            <div class="about-text">
-                <span class="text-sm tracking-widest text-gray-400 uppercase">
-                    Tentang Kami
-                </span>
+    <section id="about" class="min-h-screen flex items-center bg-[#f9f9f9] relative overflow-hidden py-32">
 
-                <h2 class="font-hero text-5xl mt-4 mb-6 leading-tight">
-                    Menjelajah keindahan<br />Nusantara
+        <!-- DECORATIVE BG ELEMENT -->
+        <div class="absolute top-20 left-0 w-64 h-64 bg-teal-50 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-20 right-0 w-96 h-96 bg-orange-50 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-12 grid grid-cols-1 md:grid-cols-2 gap-20 items-center w-full relative z-10">
+
+            <!-- TEXT COLUMN (Parallax Speed) -->
+            <div class="about-text" data-speed="0.8">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="w-12 h-[1px] bg-teal-400"></span>
+                    <span class="text-sm tracking-widest text-teal-600 font-semibold uppercase">
+                        Tentang Kami
+                    </span>
+                </div>
+
+                <h2 class="font-playfair text-5xl md:text-6xl text-gray-900 leading-[1.1] mb-8">
+                    Menjelajah <br />
+                    <span class="italic text-teal-500">Keindahan</span> Nusantara
                 </h2>
 
-                <p class="text-gray-600 leading-relaxed max-w-lg">
+                <p class="text-gray-600 leading-relaxed text-lg max-w-lg mb-10 font-light">
                     Kami menghadirkan pengalaman visual dan informasi destinasi wisata
-                    terbaik di Indonesia, dirancang untuk menginspirasi perjalanan
-                    dan eksplorasi budaya yang berkesan.
+                    terbaik di Indonesia. Platform ini dirancang untuk menginspirasi perjalanan
+                    Anda, menemukan surga tersembunyi, dan merayakan kekayaan budaya yang tak ternilai.
                 </p>
+
+                <button
+                    class="group flex items-center gap-3 text-gray-900 font-medium pb-1 border-b border-gray-900 transition-all hover:text-teal-600 hover:border-teal-600">
+                    Baca Selengkapnya
+                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </button>
             </div>
 
-            <!-- IMAGE -->
-            <div class="about-image">
-                <img src="assets/img/about.jpg" alt="Wisata Indonesia"
-                    class="rounded-2xl shadow-lg w-full h-[420px] object-cover" />
+            <!-- IMAGE COLUMN (Parallax Speed & Mask) -->
+            <div class="about-image-wrapper relative" data-speed="1.1">
+                <!-- Decorative Offset Box -->
+                <div
+                    class="absolute -bottom-8 -right-8 w-full h-full border-2 border-teal-200/50 rounded-3xl -z-10 about-deco-box">
+                </div>
+
+                <!-- Image Container with Mask -->
+                <div class="relative overflow-hidden rounded-3xl group shadow-2xl">
+                    <div class="about-image-mask absolute inset-0 bg-white z-20 origin-left"></div>
+                    <img src="assets/img/about.jpg" alt="Wisata Indonesia"
+                        class="about-img w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
             </div>
 
         </div>
     </section>
 
     <!-- DESTINASI SECTION -->
-    <section id="destinasi" class="bg-white py-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-12">
+    <section id="destinasi" class="bg-white py-32 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-12 relative">
 
             <!-- SECTION HEADER -->
-            <div class="text-center max-w-3xl mx-auto mb-28 destinasi-header">
-                <span class="playfair text-sm italic text-gray-500">
-                    Destinasi
+            <div class="text-center max-w-3xl mx-auto mb-28 destinasi-header relative z-10">
+                <span class="font-playfair text-lg italic text-teal-600">
+                    Destinasi Pilihan
                 </span>
 
-                <h2 class="playfair text-5xl leading-tight mt-4 mb-6">
-                    Explore Nusantara Hadir untuk Menyederhanakan
-                    Perjalanan Wisatamu
+                <h2 class="font-playfair text-5xl leading-tight mt-4 mb-6 text-gray-900">
+                    Jalur Menuju <span class="text-teal-500 italic">Keajaiban</span>
                 </h2>
 
-                <p class="text-gray-600 leading-relaxed">
-                    Kami membantu kamu menemukan jalur perjalanan terbaik di Indonesia —
-                    dari alam, budaya, hingga pengalaman lokal — agar setiap langkah terasa
-                    lebih bermakna dan terarah.
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    Temukan rute perjalanan terbaik yang telah kami kurasi khusus untuk
+                    pengalaman eksplorasi yang tak terlupakan.
                 </p>
             </div>
 
-            <!-- DESTINASI LIST -->
+            <!-- DESTINASI LIST WRAPPER -->
             <div class="space-y-40 relative">
 
-                <!-- DASHED PATH -->
-                <svg class="absolute left-1/2 top-0 -translate-x-1/2 w-full h-full pointer-events-none"
-                    viewBox="0 0 1000 1600" fill="none">
-                    <path d="M100 200 C500 350 500 550 900 700
-                         C500 850 500 1050 100 1200" stroke="#111827" stroke-width="3" stroke-dasharray="10 10"
-                        stroke-linecap="round" opacity="0.7" />
+                <!-- ANIMATED PATH SVG -->
+                <!-- Adjusted viewBox and path to flow through the center of items -->
+                <svg class="absolute left-1/2 top-0 -translate-x-1/2 w-full h-[120%] -mt-20 pointer-events-none z-0"
+                    viewBox="0 0 1000 1600" fill="none" preserveAspectRatio="xMidYMin slice">
+                    <!-- Base gray line -->
+                    <path d="M500 0 C500 200 200 400 200 600 C200 800 800 1000 800 1200 C800 1400 500 1600 500 1600"
+                        stroke="#E5E7EB" stroke-width="4" stroke-dasharray="12 12" />
+
+                    <!-- Drawing line (Teal) -->
+                    <path id="explorationPath"
+                        d="M500 0 C500 200 200 400 200 600 C200 800 800 1000 800 1200 C800 1400 500 1600 500 1600"
+                        stroke="#14B8A6" stroke-width="4" stroke-linecap="round" />
                 </svg>
 
                 <!-- ITEM 1 -->
-                <div class="grid grid-cols-2 gap-24 items-center destinasi-item">
-                    <div>
-                        <img src="assets/img/prambanan.jpg" class="rounded-2xl shadow-xl w-full h-[420px] object-cover"
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center destinasi-item relative z-10">
+                    <div class="group relative">
+                        <div
+                            class="absolute inset-0 bg-teal-200 rounded-3xl rotate-3 transition-transform group-hover:rotate-6 -z-10">
+                        </div>
+                        <img src="assets/img/prambanan.jpg"
+                            class="rounded-3xl shadow-xl w-full h-[450px] object-cover transition-transform duration-500 group-hover:-translate-y-2"
                             alt="Candi Prambanan">
                     </div>
 
                     <div>
-                        <h3 class="playfair text-3xl mb-4">
+                        <span class="text-teal-500 font-bold tracking-widest text-sm mb-2 block">01</span>
+                        <h3 class="font-playfair text-4xl mb-6 text-gray-900">
                             Candi Prambanan
                         </h3>
 
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                            Setiap perjalanan di Nusantara memiliki cerita yang berbeda.
-                            Dari garis pantai yang membentang luas hingga pegunungan yang
-                            menjulang tenang, Indonesia menyimpan banyak jalur eksplorasi
-                            yang menunggu untuk ditemukan.
+                        <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                            Saksi bisu sejarah megah tanah Jawa. Nikmati senja di antara
+                            relief kuno yang menceritakan kisah Ramayana diringi kemegahan arsitektur masa lampau.
                         </p>
 
                         <button
-                            class="flex items-center gap-3 bg-teal-200 px-5 py-2 rounded-full font-medium hover:bg-teal-300 transition">
-                            Jelajahi
-                            <span class="text-lg">→</span>
+                            class="flex items-center gap-3 text-gray-900 border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-teal-50 hover:border-teal-200 hover:text-teal-700 transition-all group">
+                            Lihat Detail
+                            <span class="group-hover:translate-x-1 transition-transform">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- ITEM 2 (REVERSE) -->
-                <div class="grid grid-cols-2 gap-24 items-center destinasi-item">
-                    <div>
-                        <h3 class="playfair text-3xl mb-4">
-                            Raja Ampat
-                        </h3>
-
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                            Eksplorasi Nusantara hadir sebagai panduan menemukan keindahan
-                            alam, budaya, dan destinasi terbaik di Indonesia.
-                            Perjalanan bukan sekadar tujuan, tetapi pengalaman.
-                        </p>
-
-                        <button
-                            class="flex items-center gap-3 bg-teal-200 px-5 py-2 rounded-full font-medium hover:bg-teal-300 transition">
-                            Jelajahi
-                            <span class="text-lg">→</span>
-                        </button>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center destinasi-item relative z-10">
+                    <div class="md:order-2 group relative">
+                        <div
+                            class="absolute inset-0 bg-orange-100 rounded-3xl -rotate-3 transition-transform group-hover:-rotate-6 -z-10">
+                        </div>
+                        <img src="assets/img/raja-ampat.jpg"
+                            class="rounded-3xl shadow-xl w-full h-[450px] object-cover transition-transform duration-500 group-hover:-translate-y-2"
+                            alt="Raja Ampat">
                     </div>
 
-                    <div>
-                        <img src="assets/img/raja-ampat.jpg" class="rounded-2xl shadow-xl w-full h-[420px] object-cover"
-                            alt="Raja Ampat">
+                    <div class="md:order-1 text-right md:text-left">
+                        <!-- Mobile align adjustment if needed, but keeping consistently styled -->
+                        <div class="flex flex-col md:items-end">
+                            <span class="text-teal-500 font-bold tracking-widest text-sm mb-2 block">02</span>
+                            <h3 class="font-playfair text-4xl mb-6 text-gray-900">
+                                Raja Ampat
+                            </h3>
+
+                            <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                                Surga bawah laut dunia. Gugusan pulau karang dan air sebening kristal
+                                yang menawarkan pengalaman menyelam tak tertandingi di ujung timur Nusantara.
+                            </p>
+
+                            <button
+                                class="flex items-center gap-3 text-gray-900 border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-orange-50 hover:border-orange-200 hover:text-orange-700 transition-all group self-start md:self-end">
+                                Lihat Detail
+                                <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- ITEM 3 -->
-                <div class="grid grid-cols-2 gap-24 items-center destinasi-item">
-                    <div>
-                        <img src="assets/img/bali.jpg" class="rounded-2xl shadow-xl w-full h-[420px] object-cover"
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center destinasi-item relative z-10">
+                    <div class="group relative">
+                        <div
+                            class="absolute inset-0 bg-blue-100 rounded-3xl rotate-3 transition-transform group-hover:rotate-6 -z-10">
+                        </div>
+                        <img src="assets/img/bali.jpg"
+                            class="rounded-3xl shadow-xl w-full h-[450px] object-cover transition-transform duration-500 group-hover:-translate-y-2"
                             alt="Bali">
                     </div>
 
                     <div>
-                        <h3 class="playfair text-3xl mb-4">
-                            Bali
+                        <span class="text-teal-500 font-bold tracking-widest text-sm mb-2 block">03</span>
+                        <h3 class="font-playfair text-4xl mb-6 text-gray-900">
+                            Nusa Penida, Bali
                         </h3>
 
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                            Di sini, kamu dapat menemukan inspirasi perjalanan yang sesuai
-                            dengan langkahmu sendiri — perlahan, bermakna, dan penuh
-                            rasa kagum terhadap kekayaan negeri ini.
+                        <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                            Tebing curam yang memeluk lautan biru. Temukan ketenangan
+                            di pantai tersembunyi jauh dari hiruk pikuk kota.
                         </p>
 
                         <button
-                            class="flex items-center gap-3 bg-teal-200 px-5 py-2 rounded-full font-medium hover:bg-teal-300 transition">
-                            Jelajahi
-                            <span class="text-lg">→</span>
+                            class="flex items-center gap-3 text-gray-900 border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all group">
+                            Lihat Detail
+                            <span class="group-hover:translate-x-1 transition-transform">→</span>
                         </button>
                     </div>
                 </div>
